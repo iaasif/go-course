@@ -2,24 +2,27 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
-	// fmt.Println("Hello, World!")
-	const inflationRate = 0.07
-	var inverstmentAmount float64
-	var years float64
-	var expectedReturnrate float64
+	var revenue float64
+	var expenses float64
+	var taxRate float64
 
-	fmt.Print("investment Amount: ")
-	fmt.Scanln(&inverstmentAmount)
-	fmt.Print("years?: ")
-	fmt.Scanln(&years)
+	fmt.Print("Revenue: ")
+	fmt.Scan(&revenue)
 
-	futureValue := inverstmentAmount * math.Pow(1+expectedReturnrate/100, years)
-	futureRealValue := futureValue / math.Pow(1+inflationRate, years)
+	fmt.Print("Expenses: ")
+	fmt.Scan(&expenses)
 
-	fmt.Println("Future Value:", futureValue)
-	fmt.Println("Future Real Value:", futureRealValue)
+	fmt.Print("Tax Rate: ")
+	fmt.Scan(&taxRate)
+
+	ebt := revenue - expenses
+	profit := ebt * (1 - taxRate/100)
+	ratio := ebt / profit
+
+	fmt.Println(ebt)
+	fmt.Println(profit)
+	fmt.Println(ratio)
 }
