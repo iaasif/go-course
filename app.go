@@ -5,24 +5,24 @@ import (
 )
 
 func main() {
-	var revenue float64
-	var expenses float64
-	var taxRate float64
-
-	fmt.Print("Revenue: ")
-	fmt.Scan(&revenue)
-
-	fmt.Print("Expenses: ")
-	fmt.Scan(&expenses)
-
-	fmt.Print("Tax Rate: ")
-	fmt.Scan(&taxRate)
-
-	ebt := revenue - expenses
-	profit := ebt * (1 - taxRate/100)
-	ratio := ebt / profit
+	revenue := getUserInput("Revenue")
+	expenses := getUserInput("Expenses")
+	taxRate := getUserInput("Tax Rate")
 
 	fmt.Println(ebt)
 	fmt.Println(profit)
 	fmt.Println(ratio)
+}
+
+func getUserInput(infoText string) float64 {
+	var userInput float64
+	fmt.Print(infoText + ": ")
+	fmt.Scan(&userInput)
+	return userInput
+}
+
+func calculateEBT(revenue, expenses float64) float64 {
+	ebt := revenue - expenses
+	profit := ebt * (1 - taxRate/100)
+	ratio := ebt / profit
 }
