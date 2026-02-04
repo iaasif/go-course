@@ -9,9 +9,12 @@ func main() {
 	expenses := getUserInput("Expenses")
 	taxRate := getUserInput("Tax Rate")
 
+	ebt, profit, ratio := calculateEBT(revenue, expenses, taxRate)
+
 	fmt.Println(ebt)
 	fmt.Println(profit)
 	fmt.Println(ratio)
+
 }
 
 func getUserInput(infoText string) float64 {
@@ -21,8 +24,9 @@ func getUserInput(infoText string) float64 {
 	return userInput
 }
 
-func calculateEBT(revenue, expenses float64) float64 {
+func calculateEBT(revenue, expenses, taxRate float64) (float64, float64, float64) {
 	ebt := revenue - expenses
 	profit := ebt * (1 - taxRate/100)
 	ratio := ebt / profit
+	return ebt, profit, ratio
 }
