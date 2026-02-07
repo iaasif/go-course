@@ -8,17 +8,22 @@ type userStruct struct {
 	bDate string
 }
 
+// makeing a function into a mthod , or , struct type method , there is no oop in go so, when
+func (u userStruct) outPutUserDetails() {
+	fmt.Println(u.fName, u.lName, u.bDate)
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	// var appUser userStruct
-	// appUser = userStruct{
-	// 	fName: userFirstName,
-	// 	lName: userLastName,
-	// 	bDate: userBirthdate,
-	// }
+	// // var appUser userStruct
+	// // appUser = userStruct{
+	// // 	fName: userFirstName,
+	// // 	lName: userLastName,
+	// // 	bDate: userBirthdate,
+	// // }
 
 	appUser := userStruct{
 		fName: userFirstName,
@@ -26,12 +31,7 @@ func main() {
 		bDate: userBirthdate,
 	}
 
-	outPutUserDetails(appUser)
-
-}
-
-func outPutUserDetails(u userStruct) {
-	fmt.Println(u.fName, u.lName, u.bDate)
+	appUser.outPutUserDetails()
 }
 
 func getUserData(promptText string) string {
