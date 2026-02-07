@@ -9,7 +9,8 @@ type userStruct struct {
 }
 
 // makeing a function into a mthod , or , struct type method , there is no oop in go so, when
-func (u userStruct) outPutUserDetails() {
+// if you not send any pointer in reciver argument, then it wont change struct value , it will change a copy of a struct value
+func (u *userStruct) outPutUserDetails() {
 	fmt.Println(u.fName, u.lName, u.bDate)
 }
 
