@@ -12,7 +12,7 @@ func main() {
 		fmt.Println(error)
 		return
 	}
-	fmt.Println(userNote)
+	userNote.DisplayNote()
 }
 
 func getUserInput(prompt string) string {
