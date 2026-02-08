@@ -6,8 +6,12 @@ import (
 )
 
 func main() {
-	getUserInput("note title")
-	getUserInput("note content")
+	title, content, err := getNoteData()
+	if err != nil {
+		println(err)
+		return
+	}
+	fmt.Println(title, content)
 }
 
 func getUserInput(prompt string) (string, error) {
@@ -19,4 +23,18 @@ func getUserInput(prompt string) (string, error) {
 		return "", errors.New("you should put some value here ")
 	}
 	return value, nil
+}
+
+func getNoteData() (string, string, error) {
+	title, err := getUserInput("note title")
+	if err != nil {
+		println(err)
+		return "", "", err
+	}
+	content, err := getUserInput("note content")
+	if err != nil {
+		println(err)
+		return "", "", err
+	}
+	return title, content, nil
 }
