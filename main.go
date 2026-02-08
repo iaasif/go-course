@@ -19,8 +19,7 @@ func getUserInput(prompt string) (string, error) {
 	var value string
 	fmt.Scan(&value)
 	if value == "" {
-		// fmt.Println("Please enter a value")
-		return "", errors.New("you should put some value here ")
+		return "", errors.New("Invalid input.")
 	}
 	return value, nil
 }
