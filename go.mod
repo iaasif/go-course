@@ -1,3 +1,3 @@
-module app
+module noteApp
 
 go 1.25.6
