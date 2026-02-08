@@ -12,8 +12,8 @@ type Note struct {
 	createdAt time.Time
 }
 
-func (note Note) DisplayNote() {
-	fmt.Printf("your title is: %v and the content is: %v\n\n", note.title, note.content)
+func (n Note) DisplayNote() {
+	fmt.Printf("Title is: %v and The content is: \n\n%v\n\n", n.title, n.content)
 }
 
 func New(title, content string) (Note, error) {
