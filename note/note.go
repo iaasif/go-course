@@ -9,10 +9,11 @@ import (
 	"time"
 )
 
+// struct tag
 type Note struct {
-	Title     string
-	Content   string
-	CreatedAt time.Time
+	Title     string    `"title"`
+	Content   string    `json:"content"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func (note Note) DisplayNote() {
