@@ -10,12 +10,21 @@ import (
 
 func main() {
 	title, content := getNoteData()
-	userNote, error := note.New(title, content)
-	if error != nil {
-		fmt.Println(error)
+	userNote, err := note.New(title, content)
+	if err != nil {
+		fmt.Println(err)
 		return
 	}
 	userNote.DisplayNote()
+	err = userNote.Save()
+
+	if err != nil {
+		fmt.Println("daving the note is faild ")
+		return
+	}
+
+	fmt.Println("Save succeeded!")
+
 }
 
 // this func is totaly a shit and learn a lot
