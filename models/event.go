@@ -4,9 +4,9 @@ import "time"
 
 type Event struct {
 	ID          int
-	Name        string
-	Description string
-	Localtion   string
+	Name        string `binding: "required"`
+	Description string `binding: "required"`
+	Localtion   string `binding: "required"`
 	DateTime    time.Time
 	UserID      int
 }
