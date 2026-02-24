@@ -6,7 +6,7 @@ type Event struct {
 	ID          int
 	Name        string `binding: "required"`
 	Description string `binding: "required"`
-	Localtion   string `binding: "required"`
+	Location    string `binding: "required"`
 	DateTime    time.Time
 	UserID      int
 }
