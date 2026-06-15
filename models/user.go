@@ -3,6 +3,7 @@ package models
 import (
 	"app/db"
 	"app/utils"
+	"errors"
 )
 
 type User struct {
@@ -47,7 +48,14 @@ func (u User) ValidateCredentials() error {
 	var retrievedPassword string
 	err := row.Scan(&retrievedPassword)
 	if err != nil {
-		return err
+		return errors.New("Credential invalid")
 	}
 
+	passwordIsValid := utils.CheckPasswordHash(u.Password, retrievedPassword)
+
+	if !passwordIsValid {
+		return errors.New("Credential invalid")
+	}
+
+	return nil
 }
