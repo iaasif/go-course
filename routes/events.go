@@ -2,6 +2,7 @@ package routes
 
 import (
 	"app/models"
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -35,20 +36,6 @@ func getEvent(context *gin.Context) {
 }
 
 func createEvent(context *gin.Context) {
-
-	// token := context.Request.Header.Get("Authorization")
-	// if token == "" {
-	// 	context.JSON(http.StatusUnauthorized, gin.H{"message": "Not Authorized"})
-	// 	return
-	// }
-
-	// userId, err := utils.VerifyToken(token)
-
-	// if err != nil {
-	// 	context.JSON(http.StatusUnauthorized, gin.H{"message": "Invalid token"})
-	// 	return
-	// }
-
 	var event models.Event
 	err := context.ShouldBindJSON(&event)
 
@@ -59,7 +46,7 @@ func createEvent(context *gin.Context) {
 
 	userId := context.GetInt64("userId")
 	event.UserID = userId
-
+	fmt.Println("useriddd", userId)
 	err = event.Save()
 
 	if err != nil {
@@ -77,9 +64,15 @@ func updateEvent(context *gin.Context) {
 		return
 	}
 
-	_, err = models.GetEventById(eventId)
+	userId := context.GetInt64("userId")
+	event, err := models.GetEventById(eventId)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not fetch the event."})
+		return
+	}
+
+	if event.UserID != userId {
+		context.JSON(http.StatusUnauthorized, gin.H{"message": "Not authorized to update event."})
 		return
 	}
 
@@ -106,9 +99,16 @@ func deleteEvent(context *gin.Context) {
 		return
 	}
 
+	userId := context.GetInt64("userId")
 	event, err := models.GetEventById(eventId)
+
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not fetch the event."})
+		return
+	}
+
+	if event.UserID != userId {
+		context.JSON(http.StatusUnauthorized, gin.H{"message": "Not authorized to delete event."})
 		return
 	}
 
