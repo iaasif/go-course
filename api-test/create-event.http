@@ -1,10 +1,10 @@
 
 POST http://localhost:8080/events
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFAZ21haWwuY29tIiwiZXhwIjoxNzgyMDQ2NTYwLCJ1c2VySWQiOjB9.wW6RjzrQ06ygTrp_p12OHZ8EwFApzVRAb6pG3HN3K8s
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImEiLCJleHAiOjE3ODIxMzgzNzMsInVzZXJJZCI6MX0.oJYc1wDp3L2KcdMWvO55eh94E9Ij7PlTQElutfWtvoU
 
 {
-    "Name": "7",
+    "Name": "this is a event with new authtoken ",
     "Description": "This is a test event",
     "Location": "Test Location",
     "DateTime": "2025-01-01T15:30:00.000Z"

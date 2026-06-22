@@ -125,3 +125,7 @@ func (e Event) Register(userId int64) error {
 
 	return err
 }
+
+func (e Event) CancelRegistration(userId int64) {
+
+}
